@@ -50,7 +50,7 @@ bool test_strcpy() {
     printf("||| 1 번째 테스트 결과\n");
     printf("||| 원래 문자열:[%s]\n", original1);
     printf("||| strcpy:[%s]\n", strcpy(dest11, original1));
-    printf("||| my_strcpy:[%s]\n", my_strcpy(dest12, original1));
+    printf("||| my_strcpy:[%s]\n", my_strcpy(dest12, original1, my_array_len(dest12)));
     if (strcmp(dest11, dest12) != 0) {
         printf("||| 결과: 실패!\n\n");
         return false;
@@ -68,7 +68,7 @@ bool test_strcpy() {
     printf("||| 2 번째 테스트 결과\n");
     printf("||| 원래 문자열:[%s]\n", original2);
     printf("||| strcpy:[%s]\n", strcpy(dest21, original2));
-    printf("||| my_strcpy:[%s]\n", my_strcpy(dest22, original2));
+    printf("||| my_strcpy:[%s]\n", my_strcpy(dest22, original2, my_array_len(dest22)));
     if (strcmp(dest21, dest22) != 0) {
         printf("||| 결과: 실패!\n\n");
         return false;
@@ -80,12 +80,21 @@ bool test_strcpy() {
     // 3rd - Buffer overflow case
     char original3[] = "The devil is never a maker";
     size_t len_3 = strlen(original3);
-    char dest31[len_3-1];
-    char dest32[len_3-1];
+    char dest3[len_3-1];
+    char answer3[] = "The devil is never a mak"
 
     printf("||| 3번째 테스트 결과\n");
     printf("||| 원래 문자열:[%s]\n", original3);
-    printf("||| strncpy_s: [%s]\n",)
+    printf("||| 의도한 문자열: [%s]\n", answer3);
+    printf("||| my_strcpy:[%s]\n", my_strcpy(dest3, original3, my_array_len(dest3)));
+    if (strcmp(dest3, answer3) != 0) {
+        printf("||| 결과: 실패!\n\n");
+        return false;
+    }
+    else {
+        printf("||| 결과: 성공!\n\n");
+        return true;
+    }
 
     // 4th - Buffer overflow case
     char original4[] = "The less that you give, you're a taker";

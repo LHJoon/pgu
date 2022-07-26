@@ -6,10 +6,10 @@
 size_t my_strlen(const char* str);
 
 // strcpy 개량판 만들기
-char* my_strcpy(char *dest, const char *origin);
+char* my_strcpy(char *dest, const char *origin, const int dest_len);
 
 // strcat 개량판 만들기
-char* my_strcat(char* dest, const char* origin);
+char* my_strcat(char* dest, const char* origin, const int dest_len);
 
 // strcmp 개량판 만들기
 int my_strcmp(const char* str1, const char* str2);

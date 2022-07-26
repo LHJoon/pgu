@@ -1,6 +1,7 @@
 #include "project1.h"
 #include <stdio.h>
 
+#define my_array_len(x) (int)(sizeof(x)/sizeof(char))
 // ---------------------------
 // --------- 안내 사항 ---------
 // 아래 함수들의 빈 칸에 내용을 채워넣으시오
@@ -16,13 +17,13 @@ size_t my_strlen(const char* str) {
 };
 
 // strcpy 개량판 만들기
-char* my_strcpy(char *dest, const char *origin) {
+char* my_strcpy(char *dest, const char *origin, const int dest_len) {
     // 함수 내용 작성
     return NULL;
 }
 
 // strcat 개량판 만들기
-char* my_strcat(char* dest, const char* origin) {
+char* my_strcat(char* dest, const char* origin, const int dest_len) {
     // 함수 내용 작성
     return NULL;
 }
