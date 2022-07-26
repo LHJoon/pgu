@@ -98,7 +98,8 @@ bool test_strcpy() {
 
 bool test_strcat() {
     printf("*** 5회 strcat 동작을 테스트합니다.\n");
-
+    // 이현준 바보
+    
     // 1st - normal case
 
     // 2nd - normal case
