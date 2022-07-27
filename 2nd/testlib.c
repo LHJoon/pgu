@@ -98,9 +98,38 @@ bool test_strcpy() {
 
     // 4th - Buffer overflow case
     char original4[] = "The less that you give, you're a taker";
+    size_t len_4 = strlen(original4);
+    char dest4[len_4];
+    char answer4[] = "The less that you give, you're a take";
+    printf("||| 4번째 테스트 결과\n");
+    printf("||| 원래 문자열:[%s]\n", original4);
+    printf("||| 의도한 문자열: [%s]\n", answer4);
+    printf("||| my_strcpy:[%s]\n", my_strcpy(dest4, original4, my_array_len(dest4)));
+    if (strcmp(dest4, answer4) != 0) {
+        printf("||| 결과: 실패!\n\n");
+        return false;
+    }
+    else {
+        printf("||| 결과: 성공!\n\n");
+        return true;
+    }
 
     // 5th - Buffer overflow case
     char original5[] = "So it's on and on and on, it's Heaven and Hell";
+    char dest5[5];
+    char answer5[] = "So i";
+    printf("||| 4번째 테스트 결과\n");
+    printf("||| 원래 문자열:[%s]\n", original5);
+    printf("||| 의도한 문자열: [%s]\n", answer5);
+    printf("||| my_strcpy:[%s]\n", my_strcpy(dest5, original5, my_array_len(dest5)));
+    if (strcmp(dest5, answer5) != 0) {
+        printf("||| 결과: 실패!\n\n");
+        return false;
+    }
+    else {
+        printf("||| 결과: 성공!\n\n");
+        return true;
+    }
 
     return false;
 }
