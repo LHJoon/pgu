@@ -74,6 +74,10 @@ size_t my_strlen(const char* str) {
 
 // strcpy 개량판 만들기 => 취약점 고치기
 char* my_strcpy(char *dest, const char *origin) {
+=======
+// strcpy 개량판 만들기
+char* my_strcpy(char *dest, const char *origin, const int dest_len) {
+>>>>>>> aa230cb1baf43c718021f78c6737324d1a9a3235
     // 함수 내용 작성
     // 복-붙 => 복붙하다가 몇번쨰까지 했는지 쓰다가 배열 최대치에 도착하면 NULL넣고 끝
     // flexible한 배열크기의 dest, origin 선언
@@ -138,6 +142,11 @@ char* my_strcpy(char *dest, const char *origin) {
 // strcat 개량판 만들기 => 취약점 고치기
 char* my_strcat(char* dest, const char* origin) {
     // 함수 내용 작성 복붙하다가 마지막칸에 NULL
+=======
+// strcat 개량판 만들기
+char* my_strcat(char* dest, const char* origin, const int dest_len) {
+    // 함수 내용 작성
+>>>>>>> aa230cb1baf43c718021f78c6737324d1a9a3235
     return NULL;
 }
 
