@@ -32,44 +32,14 @@
 // strlen 만들기
 size_t my_strlen(const char* str) {
     // 함수 내용 작성
-    // 1. 배열을 포인터 변수에 넣었다면 그건 어떻게 읽어야 하는지?
-    // 1.1 배열도 메모리, 포인터도 메모리주소, 즉 메모리주소+1씩 해주면 똑같겠지?
-    // 그럼 결국 배열 읽는식으로 가면될 것 같은데
-    // char *str +n; n+=1 해주면 되는거 아님?
-
-    // 2. 배열과 읽는 방식이 같다면 +=1 해주면서 NULL 만나면 멈추고 printf 해줘야지.
-    // !! char형 포인터는 메모리를 1개씩 갖는다.
-    //
-    // strlen => NULL을 만나기 전까지 정수형 변수에 +=1 해주고, 출력
-    char *str;
-    int n = 0;  //포인터 주소 조절할 변수 선언
-    while ((str+n) != NULL ) // str에 있는 NULL을 만나기 전까지
+    int count = 0;  // 카운트해줄 정수형 변수 선언
+    while (str[count] != '\0')   //문자열이 NULL값을 만날 때 까지 실행
     {
-        n += 1;     //n을 1씩 더해준다.
+        count +=1;                  // 문자열 개수 COUNT
     }
-    printf("%d\n", d);      // n = str에 있는 NULL을 만나기 전까지의 개수
-    // 하지만 저건 char의 경우에만 해당
-    // type이 다를 경우도 고려해줘야함
-    // if 자료형 = int
-    // if 자료형 = char 이런 방식도 있나..? 
-    // 일단 자료형이 다를 경우는 배제하고 코딩해보면 위와같이 나옴 암튼 그럼
-    // 포인터는 자료형마다 한개당 배정되는 비트수가 다름
-    // ex) char = 1, int = 4, double = 8 like that
-    // 포인터 주소로 이동을 해주려면 char의 경우엔 1씩, int의 경우엔 4씩임
-    // 그럼 포인터가 선언된 자료형마다 저 숫자를 다르게 해줘야함
-    // 암튼 배제하고 해보자 내가 포인터를 잘 못 이해한걸수도 있으니까 라는 희망을 품고..!
-    /*
-    int num = 0;
-    char str[] = {0, };     //배열의 요소를 모두 0으로 초기화해주면,, 다른 함수에서 사용할 때 문제가 생김
-    while ( str != NULL)    //문자열의 끝까지 array를 돌려줌
-    {
-        num +=1;
-        //printf("%d\n", num);
-    }
-    printf("%d\n", num);    //문자열 길이만큼 더해진 Num을 출력
-    */
+//    printf("%d\n", count);
 
-    return 0;
+    return count;
 }
 
 // strcpy 개량판 만들기
@@ -78,8 +48,6 @@ char* my_strcpy(char *dest, const char *origin, const int dest_len) {
     // 함수 내용 작성
     // 복-붙 => 복붙하다가 몇번쨰까지 했는지 쓰다가 배열 최대치에 도착하면 NULL넣고 끝
     // flexible한 배열크기의 dest, origin 선언
-    char dest[] = "";
-    char origin[] = "";
     // origin을 dest에 복붙하다가 dest 배열 최대치에 도착하면 NULL을 넣어야함
     // 그러려면,,, NULL만나기 -2까지 갖다 붙이고, -1에 NULL을 넣고 코드 종료
     // 배열간 복사를 어떻게 하는지? 배뎔 최대치에 도착한 것을 어떻게 아는지?
@@ -89,10 +57,10 @@ char* my_strcpy(char *dest, const char *origin, const int dest_len) {
     // 만약 origin이 더 작다면? 전에 있던거 다 지우고 그대로 넣으면 됨
     // 만약 동일하다면? 그냥 다 지우고 넣으면 됨
     // 배열도 꼭 다 지워야하는지 알아보도록 하고, 배열은 어떻게 넣는것인지 알아봐야할 듯
-    if (dest = NULL)    //배열 최대치
-    {
-        NULL-1 //시스템 메모리상에서 NULL-1을 어떻게..? 찾지
-    }
+ //   if (dest = NULL)    //배열 최대치
+ //   {
+   //     NULL-1 //시스템 메모리상에서 NULL-1을 어떻게..? 찾지
+    //}
     //dest = origin;
     //if(dest)
 
