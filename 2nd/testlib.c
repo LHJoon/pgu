@@ -6,7 +6,8 @@
 
 // test Program
 bool sl(const char* toTest) {
-    static int testnum = 1;
+    static int testnum = 0;
+    testnum++;
     int result_original = strlen(toTest);
     int result_mine = my_strlen(toTest);
     printf("||| %d 번째 테스트 결과\n", testnum);
