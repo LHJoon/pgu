@@ -85,7 +85,7 @@ bool test_strcpy() {
 
     printf("||| 3번째 테스트 결과\n");
     printf("||| 원래 문자열:[%s]\n", original3);
-    printf("||| strncpy_s: [%s]\n",)
+    //printf("||| strncpy_s: [%s]\n");
 
     // 4th - Buffer overflow case
     char original4[] = "The less that you give, you're a taker";
