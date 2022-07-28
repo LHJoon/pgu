@@ -138,7 +138,7 @@ bool test_strcat() {
     printf("||| 1번째 테스트 결과\n");
     printf("||| 원래 문자열: [%s], [%s]\n", str111, str12);
     printf("||| 의도한 문자열: [%s]\n", strcat(str111, str12));
-    printf("||| my_strcat: [%s]\n", my_strcpy(str112, str12, my_array_len(str112)));
+    printf("||| my_strcat: [%s]\n", my_strcat(str112, str12, my_array_len(str112)));
     if (strcmp(str111, str112) != 0) {
         printf("||| 결과: 실패!\n\n");
         return false;
@@ -154,7 +154,7 @@ bool test_strcat() {
     printf("||| 2번째 테스트 결과\n");
     printf("||| 원래 문자열: [%s], [%s]\n", str211, str22);
     printf("||| 의도한 문자열: [%s]\n", strcat(str211, str22));
-    printf("||| my_strcat: [%s]\n", my_strcpy(str212, str22, my_array_len(str212)));
+    printf("||| my_strcat: [%s]\n", my_strcat(str212, str22, my_array_len(str212)));
     if (strcmp(str211, str212) != 0) {
         printf("||| 결과: 실패!\n\n");
         return false;
@@ -170,7 +170,7 @@ bool test_strcat() {
     printf("||| 3번째 테스트 결과\n");
     printf("||| 원래 문자열: [%s], [%s]\n", str31, str32);
     printf("||| 의도한 문자열: [%s]\n", ans3);
-    printf("||| my_strcat: [%s]\n", my_strcpy(str31, str32, my_array_len(str31)));
+    printf("||| my_strcat: [%s]\n", my_strcat(str31, str32, my_array_len(str31)));
     if (strcmp(str31, ans3) != 0) {
         printf("||| 결과: 실패!\n\n");
         return false;
@@ -186,7 +186,7 @@ bool test_strcat() {
     printf("||| 4번째 테스트 결과\n");
     printf("||| 원래 문자열: [%s], [%s]\n", str41, str42);
     printf("||| 의도한 문자열: [%s]\n", ans4);
-    printf("||| my_strcat: [%s]\n", my_strcpy(str41, str42, my_array_len(str41)));
+    printf("||| my_strcat: [%s]\n", my_strcat(str41, str42, my_array_len(str41)));
     if (strcmp(str41, ans4) != 0) {
         printf("||| 결과: 실패!\n\n");
         return false;
@@ -202,7 +202,7 @@ bool test_strcat() {
     printf("||| 5번째 테스트 결과\n");
     printf("||| 원래 문자열: [%s], [%s]\n", str51, str52);
     printf("||| 의도한 문자열: [%s]\n", ans5);
-    printf("||| my_strcat: [%s]\n", my_strcpy(str51, str52, my_array_len(str51)));
+    printf("||| my_strcat: [%s]\n", my_strcat(str51, str52, my_array_len(str51)));
     if (strcmp(str51, ans5) != 0) {
         printf("||| 결과: 실패!\n\n");
         return false;
@@ -215,19 +215,97 @@ bool test_strcat() {
 
 bool test_strcmp() {
     printf("*** 6회 strcmp 동작을 테스트합니다.\n");
-
     // 1st - 0이 나오게
+    char a1[] = "There's a lady who's sure all that glitters is gold";
+    char b1[] = "There's a lady who's sure all that glitters is gold";
+    printf("||| 1번째 테스트 결과\n");
+    printf("||| 비교 문자열: [%s], [%s]\n", a1, b1);
+    printf("||| 의도한 strcmp 값: [%d]\n", strcmp(a1, b1));
+    printf("||| my_strcmp: [%d]\n", my_strcmp(a1, b1));
+    if (strcmp(a1, b1) != my_strcmp(a1, b1)) {
+        printf("||| 결과: 실패!\n\n");
+        return false;
+    }
+    else {
+        printf("||| 결과: 성공!\n\n");
+    }
 
-    // 2nd - 0 이상이 나오게
+    // 2nd - 0 이하가 나오게
+    char a2[] = "And she's buying a stairway to heaven";
+    char b2[] = "When she gets there she knows, if the stores are all closed";
+    printf("||| 2번째 테스트 결과\n");
+    printf("||| 비교 문자열: [%s], [%s]\n", a2, b2);
+    printf("||| 의도한 strcmp 값: [%d]\n", strcmp(a2, b2));
+    printf("||| my_strcmp: [%d]\n", my_strcmp(a2, b2));
+    if (strcmp(a2, b2) != my_strcmp(a2, b2)) {
+        printf("||| 결과: 실패!\n\n");
+        return false;
+    }
+    else {
+        printf("||| 결과: 성공!\n\n");
+    }
 
-    // 3rd - 0 이하가 나오게
+    // 3rd - 0 이상이 나오게
+    char a3[] = "With a word she can get what she came for";
+    char b3[] = "Ooh, ooh, and she's buying a stairway to heaven";
+    printf("||| 3번째 테스트 결과\n");
+    printf("||| 비교 문자열: [%s], [%s]\n", a3, b3);
+    printf("||| 의도한 strcmp 값: [%d]\n", strcmp(a3, b3));
+    printf("||| my_strcmp: [%d]\n", my_strcmp(a3, b3));
+    if (strcmp(a3, b3) != my_strcmp(a3, b3)) {
+        printf("||| 결과: 실패!\n\n");
+        return false;
+    }
+    else {
+        printf("||| 결과: 성공!\n\n");
+    }
 
     // 4th - 0이 나오게
+    char a4[] = "\tThere's a sign on the wall, but she wants to be sure\n'Cause you know sometimes words have two meanings";
+    char b4[] = "\tThere's a sign on the wall, but she wants to be sure\n'Cause you know sometimes words have two meanings";
+    printf("||| 4번째 테스트 결과\n");
+    printf("||| 비교 문자열: [%s], [%s]\n", a4, b4);
+    printf("||| 의도한 strcmp 값: [%d]\n", strcmp(a4, b4));
+    printf("||| my_strcmp: [%d]\n", my_strcmp(a4, b4));
+    if (strcmp(a4, b4) != my_strcmp(a4, b4)) {
+        printf("||| 결과: 실패!\n\n");
+        return false;
+    }
+    else {
+        printf("||| 결과: 성공!\n\n");
+    }
 
     // 5th - 0 이상이 나오게
+    char a5[] = "In a tree by the brook, there's a songbird who sings ";
+    char b5[] = "In a tree by the brook, there's a songbird who sings";
+    printf("||| 5번째 테스트 결과\n");
+    printf("||| 비교 문자열: [%s], [%s]\n", a5, b5);
+    printf("||| 의도한 strcmp 값: [%d]\n", strcmp(a5, b5));
+    printf("||| my_strcmp: [%d]\n", my_strcmp(a5, b5));
+    if (strcmp(a5, b5) != my_strcmp(a5, b5)) {
+        printf("||| 결과: 실패!\n\n");
+        return false;
+    }
+    else {
+        printf("||| 결과: 성공!\n\n");
+    }
 
     // 6th - 0 이하가 나오게
-    return false;
+    char a5[] = "Sometimes all of our thoughts are misgiveN";
+    char b5[] = "Sometimes all of our thoughts are misgiven";
+    printf("||| 6번째 테스트 결과\n");
+    printf("||| 비교 문자열: [%s], [%s]\n", a6, b6);
+    printf("||| 의도한 strcmp 값: [%d]\n", strcmp(a6, b6));
+    printf("||| my_strcmp: [%d]\n", my_strcmp(a6, b6));
+    if (strcmp(a6, b6) != my_strcmp(a6, b6)) {
+        printf("||| 결과: 실패!\n\n");
+        return false;
+    }
+    else {
+        printf("||| 결과: 성공!\n\n");
+    }
+
+    return true;
 }
 
 bool test_strchr() {
