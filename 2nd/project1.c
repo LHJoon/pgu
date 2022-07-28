@@ -1,7 +1,6 @@
 #include "project1.h"
 #include <stdio.h>
 
-#define my_array_len(x) (int)(sizeof(x)/sizeof(char))
 // ---------------------------
 // --------- 안내 사항 ---------
 // 아래 함수들의 빈 칸에 내용을 채워넣으시오

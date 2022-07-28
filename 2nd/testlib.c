@@ -79,7 +79,7 @@ bool test_strcpy() {
     char original3[] = "The devil is never a maker";
     size_t len_3 = strlen(original3);
     char dest3[len_3-1];
-    char answer3[] = "The devil is never a mak"
+    char answer3[] = "The devil is never a mak";
 
     printf("||| 3번째 테스트 결과\n");
     printf("||| 원래 문자열:[%s]\n", original3);
@@ -198,7 +198,7 @@ bool test_strcat() {
     // 5th - Buffer overflow case
     char str51[35] = "I know it's everybody's sin";
     char str52[] = "You got to lose to know how to win";
-    char ans5[] = "I know it's everybody's sinYou got"
+    char ans5[] = "I know it's everybody's sinYou got";
     printf("||| 5번째 테스트 결과\n");
     printf("||| 원래 문자열: [%s], [%s]\n", str51, str52);
     printf("||| 의도한 문자열: [%s]\n", ans5);
@@ -291,8 +291,8 @@ bool test_strcmp() {
     }
 
     // 6th - 0 이하가 나오게
-    char a5[] = "Sometimes all of our thoughts are misgiveN";
-    char b5[] = "Sometimes all of our thoughts are misgiven";
+    char a6[] = "Sometimes all of our thoughts are misgiveN";
+    char b6[] = "Sometimes all of our thoughts are misgiven";
     printf("||| 6번째 테스트 결과\n");
     printf("||| 비교 문자열: [%s], [%s]\n", a6, b6);
     printf("||| 의도한 strcmp 값: [%d]\n", strcmp(a6, b6));

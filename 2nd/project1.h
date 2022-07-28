@@ -2,6 +2,8 @@
 #define PROJECT_1
 #include <stdio.h>
 
+#define my_array_len(x) (int)(sizeof(x)/sizeof(char))
+
 // strlen 만들기
 size_t my_strlen(const char* str);
 
