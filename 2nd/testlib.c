@@ -365,6 +365,57 @@ bool test_strchr() {
 }
 
 bool test_strstr() {
-    printf("*** strstr 동작을 테스트합니다.\n");
-    return false;
+    printf("*** 3회 strstr 동작을 테스트합니다.\n");
+
+    // 1th
+    char a1[] = "And disciplinary remains mercifully";
+    char b1[] = "rem";
+    printf("||| 1번째 테스트 결과\n");
+    printf("||| 검색 문자열, 문자: [%s], [%s]\n", a1, b1);
+    char *c1 = strstr(a1, b1);
+    printf("||| 의도한 포인터값 및 문자열: [%p], [%s]\n", c1, c1);
+    char *d1 = my_strstr(a1, b1);
+    printf("||| my_strstr: [%p], [%s]\n", d1, d1);
+    if (c1 != d1) {
+        printf("||| 결과: 실패!\n\n");
+        return false;
+    }
+    else {
+        printf("||| 결과: 성공!\n\n");
+    }
+
+    // 2nd
+    char a2[] = "Yes and um, I\'m with you Derek, this star nonsense";
+    char b2[] = "\'m";
+    printf("||| 2번째 테스트 결과\n");
+    printf("||| 검색 문자열, 문자: [%s], [%s]\n", a2, b2);
+    char *c2 = strstr(a2, b2);
+    printf("||| 의도한 포인터값 및 문자열: [%p], [%s]\n", c2, c2);
+    char *d2 = my_strstr(a2, b2);
+    printf("||| my_strstr: [%p], [%s]\n", d2, d2);
+    if (c2 != d2) {
+        printf("||| 결과: 실패!\n\n");
+        return false;
+    }
+    else {
+        printf("||| 결과: 성공!\n\n");
+    }
+
+    // 3rd
+    char a3[] = "Yes, yes";
+    char b3[] = "yest";
+    printf("||| 3번째 테스트 결과\n");
+    printf("||| 검색 문자열, 문자: [%s], [%s]\n", a3, b3);
+    char *c3 = strstr(a3, b3);
+    printf("||| 의도한 포인터값 및 문자열: [%p], [%s]\n", c3, c3);
+    char *d3 = my_strstr(a3, b3);
+    printf("||| my_strstr: [%p], [%s]\n", d3, d3);
+    if (c3 != d3) {
+        printf("||| 결과: 실패!\n\n");
+        return false;
+    }
+    else {
+        printf("||| 결과: 성공!\n\n");
+    }
+    return true;
 }
