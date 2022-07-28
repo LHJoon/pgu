@@ -57,7 +57,6 @@ bool test_strcpy() {
     }
     else {
         printf("||| 결과: 성공!\n\n");
-        return true;
     }
     // 2nd - normal case 빡빡하게
     char original2[] = "Do me a wrong, you're a bringer of evil";
@@ -75,7 +74,6 @@ bool test_strcpy() {
     }
     else {
         printf("||| 결과: 성공!\n\n");
-        return true;
     }
     // 3rd - Buffer overflow case
     char original3[] = "The devil is never a maker";
@@ -93,7 +91,6 @@ bool test_strcpy() {
     }
     else {
         printf("||| 결과: 성공!\n\n");
-        return true;
     }
 
     // 4th - Buffer overflow case
@@ -111,7 +108,6 @@ bool test_strcpy() {
     }
     else {
         printf("||| 결과: 성공!\n\n");
-        return true;
     }
 
     // 5th - Buffer overflow case
@@ -128,27 +124,93 @@ bool test_strcpy() {
     }
     else {
         printf("||| 결과: 성공!\n\n");
-        return true;
     }
 
-    return false;
+    return true;
 }
 
 bool test_strcat() {
     printf("*** 5회 strcat 동작을 테스트합니다.\n");
-    // pussy.
-    
     // 1st - normal case
+    char str111[100] = "Every time that I look in the mirror";
+    char str112[100] = "Every time that I look in the mirror";
+    char str12[] = "All these lines on my face getting clearer";
+    printf("||| 1번째 테스트 결과\n");
+    printf("||| 원래 문자열: [%s], [%s]\n", str111, str12);
+    printf("||| 의도한 문자열: [%s]\n", strcat(str111, str12));
+    printf("||| my_strcat: [%s]\n", my_strcpy(str112, str12, my_array_len(str112)));
+    if (strcmp(str111, str112) != 0) {
+        printf("||| 결과: 실패!\n\n");
+        return false;
+    }
+    else {
+        printf("||| 결과: 성공!\n\n");
+    }
 
     // 2nd - normal case
+    char str211[100] = "The past is gone";
+    char str212[100] = "The past is gone";
+    char str22[] = "Oh, it went by like dusk to dawn";
+    printf("||| 2번째 테스트 결과\n");
+    printf("||| 원래 문자열: [%s], [%s]\n", str211, str22);
+    printf("||| 의도한 문자열: [%s]\n", strcat(str211, str22));
+    printf("||| my_strcat: [%s]\n", my_strcpy(str212, str22, my_array_len(str212)));
+    if (strcmp(str211, str212) != 0) {
+        printf("||| 결과: 실패!\n\n");
+        return false;
+    }
+    else {
+        printf("||| 결과: 성공!\n\n");
+    }
 
     // 3rd - Buffer overflow case
+    char str31[25] = "Isn't that the way?";
+    char str32[] = "Everybody's got their dues in life to pay, oh, oh, oh";
+    char ans3[] = "Isn't that the way?Every";
+    printf("||| 3번째 테스트 결과\n");
+    printf("||| 원래 문자열: [%s], [%s]\n", str31, str32);
+    printf("||| 의도한 문자열: [%s]\n", ans3);
+    printf("||| my_strcat: [%s]\n", my_strcpy(str31, str32, my_array_len(str31)));
+    if (strcmp(str31, ans3) != 0) {
+        printf("||| 결과: 실패!\n\n");
+        return false;
+    }
+    else {
+        printf("||| 결과: 성공!\n\n");
+    }
 
     // 4th - Buffer overflow case
+    char str41[20] = "I know nobody knows";
+    char str42[] = "Where it comes and where it goes";
+    char ans4[] = "I know nobody knows";
+    printf("||| 4번째 테스트 결과\n");
+    printf("||| 원래 문자열: [%s], [%s]\n", str41, str42);
+    printf("||| 의도한 문자열: [%s]\n", ans4);
+    printf("||| my_strcat: [%s]\n", my_strcpy(str41, str42, my_array_len(str41)));
+    if (strcmp(str41, ans4) != 0) {
+        printf("||| 결과: 실패!\n\n");
+        return false;
+    }
+    else {
+        printf("||| 결과: 성공!\n\n");
+    }
 
     // 5th - Buffer overflow case
-
-    return false;
+    char str51[35] = "I know it's everybody's sin";
+    char str52[] = "You got to lose to know how to win";
+    char ans5[] = "I know it's everybody's sinYou got"
+    printf("||| 5번째 테스트 결과\n");
+    printf("||| 원래 문자열: [%s], [%s]\n", str51, str52);
+    printf("||| 의도한 문자열: [%s]\n", ans5);
+    printf("||| my_strcat: [%s]\n", my_strcpy(str51, str52, my_array_len(str51)));
+    if (strcmp(str51, ans5) != 0) {
+        printf("||| 결과: 실패!\n\n");
+        return false;
+    }
+    else {
+        printf("||| 결과: 성공!\n\n");
+    }
+    return true;
 }
 
 bool test_strcmp() {
