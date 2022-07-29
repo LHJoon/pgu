@@ -33,9 +33,9 @@
 size_t my_strlen(const char* str) {
     // 함수 내용 작성
     int count = 0;  // 카운트해줄 정수형 변수 선언
-    while (str[count] != '\0')   //문자열이 NULL값을 만날 때 까지 실행
+    while (str[count] != '\0')   //문자열이 NULL값을 만날 때 까지 실행          char *s1= "hi" h +1, i 2, return 2, s1[2] = NULL
     {
-        count +=1;                  // 문자열 개수 COUNT
+        count +=1;                  // 문자열 개수 COUNT    
     }
 //    printf("%d\n", count);
 
@@ -81,40 +81,12 @@ char* my_strcpy(char *dest, const char *origin, const int dest_len) {
 // strcat 개량판 만들기
 char* my_strcat(char* dest, const char* origin, const int dest_len) {
     // 함수 내용 작성
-    // 1. strcat은 dest에 origin을 덧붙여 주는 것이다.
-    // 2. dest_len의 길이 미만까지 dest + origin을 붙여.
-    // 3. dest[dest_len -2]까지 붙이고, [dest_len-1]에 널 넣어.
-    // => while문은 어떠한 조건이 될 때 까지 쭉 돌려주는 작업을 함
-    // => while문에서 dest[dest_len -2]부터 origin을 붙임. [dest_len-1]에 널을 넣으면 됨.
-    // 근데 len은 단순히 어떠한 사이즈의 배열 안에 있는 개수를 읽는거지 그 사이즈를 알 수 있는건 아님
-    // 그럼 cpy는 어떻게 된거지 씨123발
-    // 아 씨123발 나란 병신
-    // 공백은 '\0'이 아니다 just blank fuck that shit poor little puppy.
-    // 그럼 일단 dest를 dest_len까지 읽어, 그리고 NULL을 만나지 않았다면 NULL을 만날떄까지 origin을 갖다 박아
-    // 그래도 NULL을 안만났으면 origin을 다 넣고 '\0'을 갖다 박아주고 함수를 끝내.
 
-    // 정리해보자
-    // int count =0;
-    // 조건 1. dest[count] != '\0'
-    // 조건 2. origin[count] != '\0'
-    // while이 끝난 뒤 dest[count] = '\0';
-    // dest의 전체 크기가 dest+origin[count]보다 작다면
-    // dest[전체크기-2]까지 origin을 갖다 박고, dest[전체크기-1]에 널을 갖다 박고 끝내
-
-    // 처음부터 다시
-    // while문에서는 dest안에 들어있는 dest[ (dest_len-1) + count](NULL이 있는곳)을 시작점으로 origin[count]를 넣어줄거야 그리고 count를 ++해나가겠지 count의 초기값은 0으로 줘야한다.
-    // 1. 하지만 dest의 전체 사이즈가 기존에 있던 dest[dest_len-1 +count]보다 작다면
-    // 2. 우리는 dest의 전체 사이즈. 즉, dest[size_len-2]까지만 origin[count]를 넣어주고 dest[size_len-1]에는 널 문자를 넣을거야 맞아. 나도 이제 뭐가 뭔지 모르겠어.
-    // 3. 내가 무언가를 단단히 착각하고 있는 것 같아.
-    // 4. 그냥 그렇게 dest에 origin을 넣으면서 가다가 만약 dest가 널 문자를 만나면 넣는걸 멈추고, 만약 origin을 다 넣었는데도 NULL을 못 만났다면 origin을 다 넣고나서 NULL을 넣어주면 되잖아?
-    // 그럼 dest [dest_len +count] !='\0' => dest에 원래있던 애 + count 즉 origin에서 넣은 애가 널을 만나기 전까지.
-    // 혹은 origin의 len-1까지 다 넣고나서 그 다음에 NULl을 넣어주던강몰라씨발ㄹㅇ좆같네
-    // dest[dest_len] 부터 origin[count]였네 씨발ㅋㅋpoor little HJ
-    // 그럼 이제 좀 쉬고나서 while문 조건 생각하고, while문 빠져나왔을 때 어떻게 해야하는지 다시 생각해라 poor little HJ
     int count=0;
-    while ((dest[count] != '\0') && (origin[count] != '\0') )
+    int len = my_strlen(dest);
+    while ( ( len + count < dest_len-1 ) && (origin[count] != '\0') )   //다시 공부해서 주석 다시 달기
     {
-        dest[dest_len + count] = origin[count];
+        dest[ len + count ] = origin[count];
         count++;
     }
     dest[dest_len + count] = '\0';
