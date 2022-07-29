@@ -81,9 +81,10 @@ char* my_strcat(char* dest, const char* origin, const int dest_len) {
     // 함수 내용 작성
 
     //origin을 dest에 이어붙이는거
-    // dest[dest_len]에 '\0'이 존재할테니 dest[dest_len]부터 origin을 넣어주면 됨
-    // dest[dest_len-1]까지 읽고, origin을 읽어주면 됨
-    // 하지만 dest를 먼저 다 읽고 origin을 돌려줘야함
+    // dest[dest_len]에 '\0'이 존재할테니 dest[dest_len-1]까지 읽고, dest[dest_len]부터 origin을 넣어주면 됨
+    // 만약 dest_size > dest_len-1 + origin[max] 상관없음
+    // 만약 dest_size < dest_len-1 + origin[max] 라면, dest_len-2까지 다 써주고, 마지막에 '\0'을 넣어주면 됨
+    // 
     int count = 0;
     while ( (dest[dest_len-1]) && (origin[count] ='\0') )   //dest를 '\0'전까지 읽음과 동시에, origin이 '\0'을 만나면 멈춤
     {
