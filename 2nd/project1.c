@@ -46,21 +46,12 @@ size_t my_strlen(const char* str) {
 char* my_strcpy(char *dest, const char *origin, const int dest_len) {
 
     // 함수 내용 작성
-    // 복-붙 => 복붙하다가 몇번쨰까지 했는지 쓰다가 배열 최대치에 도착하면 NULL넣고 끝
-    // flexible한 배열크기의 dest, origin 선언
-    // origin을 dest에 복붙하다가 dest 배열 최대치에 도착하면 NULL을 넣어야함
-    // 그러려면,,, NULL만나기 -2까지 갖다 붙이고, -1에 NULL을 넣고 코드 종료
-    // 배열간 복사를 어떻게 하는지? 배뎔 최대치에 도착한 것을 어떻게 아는지?
-    // 배열 최대치 : NULL을 만난 곳
-    // 경우를 정해보자.
-    // 만약 origin이 더 크다면? 크기 비교해서 그 크기만큼 -1한 뒤  마지막에 NULL넣어주면 됨
-    // 만약 origin이 더 작다면? 전에 있던거 다 지우고 그대로 넣으면 됨
-    // 만약 동일하다면? 그냥 다 지우고 넣으면 됨
-    // 배열도 꼭 다 지워야하는지 알아보도록 하고, 배열은 어떻게 넣는것인지 알아봐야할 듯
- //   if (dest = NULL)    //배열 최대치
- //   {
-   //     NULL-1 //시스템 메모리상에서 NULL-1을 어떻게..? 찾지
-    //}
+    int count = 0;
+
+    while(dest[count] != '\0')
+    {
+        dest[count] = origin[count];
+    }
     //dest = origin;
     //if(dest)
 
@@ -101,7 +92,7 @@ char* my_strcpy(char *dest, const char *origin, const int dest_len) {
     // return *dest 이렇게 해주면될 것 같음.
     // 크거나 같을때는 조건 동일하니까 한 번에 묶어주자
     */
-    return NULL;
+    return dest;
 }
 
 // strcat 개량판 만들기
