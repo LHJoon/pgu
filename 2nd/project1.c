@@ -47,57 +47,51 @@ char* my_strcpy(char *dest, const char *origin, const int dest_len) {
 
     // 함수 내용 작성
     int count = 0;
+    /*
 
-    while(dest[count] != '\0')
+    while(dest[count] != '\0')  // dest_len의 길이 미만까지 origin을 붙여. if(mystrlen(origin) < dest_len) { 복붙이 끝나면 '\0'을 넣어주면 됨}
+                                // dest[dest_len -2] 까지 붙이고, [dest_len-1]에 '\0'을 넣어주면 됨
+                                //1. while문에서는 origin을 dest에 하나하나 넣어주는 작업을 함
+                                //2. if origin이 dest보다 크다면 dest_len의 -2까지 count해서 넣어줌 => count < (dest_len-1)
+                                //3. else origin이 dest보다 작다면, origin이 다 들어가고 나서 '\0'을 넣어주고 끝남. => origin[count] != '\0'
+                                //4. (23종합) => ( count < (dest_len-1) ) && ( origin[count] != '\0' )
+                                // dest[count] = '\0';
     {
+        count++;
         dest[count] = origin[count];
     }
-    //dest = origin;
-    //if(dest)
-
-    /*
-    origin이 더 크다고 했을 떄
-    배열 dest, origin 있다고 가정해보자
-    char dest[] = "";   // destination
-    char origin[] = ""; // origin
-    if (strlen(dest) < strlen(origin))  //만약 dest보다 origin이 더 클 때
-
-    char 를 세어주려면
-    for (int i=0; i<dest[]; i++)    //i는 destination의 크기보다 1작을 때까지 
-                                    //dest[i] = origin[i]하면서 i += 1; 해주고
-                                    // if (i ==dest[max])
-                                    {
-                                        dest[max] = NULL;
-                                    } 
-                                    이러면 하나씩 넣어주는 꼴이 되고, 마지막은 강제로 NULL
-                                    그럼 dest[max]를 어떻게 쓰는지만 알면 될 듯
-    {
-        if (dest[i] = NULL)    // 만약 dest[i]가 NULL에 도달했다면
-        {
-            b[i-1] = NULL   // NULL
-        }
-    }
-    
-    // dest가 더 크거나 같을 때
-    char dest[] = "";
-    char origin[] = "";
-    if (strlen(dest) >= strlen(origin))
-    {
-        for (int i=0; i<=dest[max]; i++)
-        {
-            dest[i] = origin[i];
-        }
-    }
-    // 포인터를 반환하는 거니까
-    // return *dest 이렇게 해주면될 것 같음.
-    // 크거나 같을때는 조건 동일하니까 한 번에 묶어주자
     */
-    return dest;
+   while ( (count < (dest_len-1) ) && (origin[count] != '\0') )     // count가 dest_len-1 즉 '\0'전까지 다 쓰여졌을 때 and origin이 '\0'이 아닐때까지
+                                                                    // 1. origin이 dest에 들어가야함 (dest는 빈공간일 수도 있다)
+                                                                    // 2. origin을 dest에 다 넣고나서, '\0'문자를 마지막에 넣어주고 끝내면 됨
+                                                                    // 3. 하지만 만약 dest에 공간이 부족하다면? dest의 마지막인덱스-1 == dest_len의 -2까지 다 넣어주고
+                                                                    // 3.1 마지막에 '\0'을 넣어주면 됨
+                                                                    // 즉 조건은 count < dest_len-1 and origin[count] != '\0' , while문이 끝난 직후 dest[count] = '\0'
+   {
+        dest[count] = origin[count];
+        count++;
+   }
+    dest[count] = '\0';     // final count에 '\0'을 넣어 문자열을 끝맺음
+    
+    return dest;            //copy된 Dest return
 }
 
 // strcat 개량판 만들기
 char* my_strcat(char* dest, const char* origin, const int dest_len) {
     // 함수 내용 작성
+
+    //origin을 dest에 이어붙이는거
+    // dest[dest_len]에 '\0'이 존재할테니 dest[dest_len]부터 origin을 넣어주면 됨
+    // dest[dest_len-1]까지 읽고, origin을 읽어주면 됨
+    // 하지만 dest를 먼저 다 읽고 origin을 돌려줘야함
+    int count = 0;
+    while ( (dest[dest_len-1]) && (origin[count] ='\0') )   //dest를 '\0'전까지 읽음과 동시에, origin이 '\0'을 만나면 멈춤
+    {
+            dest[count];
+            origin[count];
+            count++
+    }
+    
 
     return NULL;
 }
