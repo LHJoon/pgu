@@ -81,7 +81,7 @@ char* my_strcpy(char *dest, const char *origin, const int dest_len) {
 // strcat 개량판 만들기
 char* my_strcat(char* dest, const char* origin, const int dest_len) {
     // 함수 내용 작성
-
+    
     int count=0;
     int len = my_strlen(dest);
     while ( ( len + count < dest_len-1 ) && (origin[count] != '\0') )   //다시 공부해서 주석 다시 달기
@@ -89,7 +89,7 @@ char* my_strcat(char* dest, const char* origin, const int dest_len) {
         dest[ len + count ] = origin[count];
         count++;
     }
-    dest[dest_len + count] = '\0';
+    dest[len + count] = '\0';
 
     return dest;
 }
