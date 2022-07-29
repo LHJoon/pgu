@@ -82,48 +82,6 @@ char* my_strcpy(char *dest, const char *origin, const int dest_len) {
 char* my_strcat(char* dest, const char* origin, const int dest_len) {
     // 함수 내용 작성
 
-    //origin을 dest에 이어붙이는거
-    // dest[dest_len]에 '\0'이 존재할테니 dest[dest_len-1]까지 읽고, dest[dest_len]부터 origin을 넣어주면 됨
-    // 만약 dest_size > dest_len-1 + origin[max] 고려 x
-    // 만약 dest_size < dest_len-1 + origin[max] 라면, dest_len-2까지 다 써주고, 마지막에 '\0'을 넣어주면 됨 => count < a_len-1 
-    // int count = 0;
-    // dest[dest_len + count] = origin[count] 이렇게하면 일단 dest와 count를 붙여주는건 완성
-
-    // 하지만 만약 dest의 사이즈가 while문이 돌아간 다음의 dest_len + origin[count]보다 크다면
-    // 그 땐 dest_len-1 = '\0'
-    // 그럼 while문의 조건은? origin[count] != '\0' 그리고, sizeof_dest > dest_len + origin[count]
-    int count = 0;      //count 세주는 정수형 변수
-
-    while( count < (dest_len-1) && (origin[count] != '\0') )    // idx상 len-2값이어야 '\0'직전까지 쓰인다. && origin이 NULL을 만나면 끝난다.
-    {
-        dest[dest_len + count] = origin[count];   //dest는 그대로 출력, dest의 NULL문자부터 origin을 덧 씌워줌
-        count++;
-    }
-    dest[count] = '\0'; //마지막에 '\0'를 넣어서 끝맺음 지어줌
-
-    /*
-    처음부터 생각해보다
-    strcat은 dest의 마지막에 있는 널 문자를 없앤 뒤, origin을 덧 붙이는 것이다.
-    이 때 dest[dest_len]은 dest
-    arr[10] ="123456789"; but strlen(arr) = 10. So, arr[10] = '\0', 
-    dest[10] => 얘 인자는 NULL 제외하면 9개, dest[dest_len]에 NULL이 들어있음
-    그렇다면
-    int count = 0;
-    dest[dest_len+count] = origin[count]
-    count++;
-    이렇게하면 일단 하나는 해결했다.
-    // dest가 dest[dest_len + origin[max]]보다 작다면 => 이건 while문에서 count++이 전부 돌아갔을 때 해결 가능함
-    //sizeof_dest < dest[dest_len + count] 일 때, sizeof_dest는 어떻게 구하느냐?
-    // dest에서 NULL을 만날때까지 값을 존나 넣어, 그리고 dest의 len을 구해
-    // 그리고 그 if (dest_array_size < dest[dest_len + count]
-    {   
-        dest[dest_array_size] = '\0'; 
-    }
-    이걸 종합해보면 에라이 씨버럴거 ㅋㅋ
-    종이가져와 씨발
-    
-    */
-
     return dest;
 }
 
