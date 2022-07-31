@@ -114,6 +114,7 @@ char* my_strchr(const char* str, int c) {
 
     int count = 0;  // str을 순차적으로 count해줄 변수
     int gap = 0;    // str, c의 차이를 저장할 변수
+    int len = my_strlen(str);
 
     while( str[count] != '\0')  //str이 '\0'을 만나기 전까지 roop.
     {   
@@ -126,9 +127,12 @@ char* my_strchr(const char* str, int c) {
         }
         count++;    // if절을 통과하고 나서 ++해주기.
     }
+    //strchr은 문자열에서 문자를 찾다가 문자를 찾고 '\0'을 만나면 '\0'을 반환하고 끝내는 함수 즉 while이 끝난 뒤 '\0'을 넣어주어 구분지어야한다.
+    str[len] = '\0';
     
     return &str[count];    //return to str[count] address
-
+    // 만약 검색한 문자가 대상 문자열에 아예 존재하지 않는다면
+    // 
 }
 
 // strstr 만들기
