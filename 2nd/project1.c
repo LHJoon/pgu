@@ -48,29 +48,16 @@ char* my_strcpy(char *dest, const char *origin, const int dest_len) {
     // 함수 내용 작성
     int count = 0;
     /*
-
-    while(dest[count] != '\0')  // dest_len의 길이 미만까지 origin을 붙여. if(mystrlen(origin) < dest_len) { 복붙이 끝나면 '\0'을 넣어주면 됨}
-                                // dest[dest_len -2] 까지 붙이고, [dest_len-1]에 '\0'을 넣어주면 됨
-                                //1. while문에서는 origin을 dest에 하나하나 넣어주는 작업을 함
-                                //2. if origin이 dest보다 크다면 dest_len의 -2까지 count해서 넣어줌 => count < (dest_len-1)
-                                //3. else origin이 dest보다 작다면, origin이 다 들어가고 나서 '\0'을 넣어주고 끝남. => origin[count] != '\0'
-                                //4. (23종합) => ( count < (dest_len-1) ) && ( origin[count] != '\0' )
-                                // dest[count] = '\0';
-
-    {
-        count++;
-        dest[count] = origin[count];
-    }
+    1. origin이 '\0'을 만나기 전까지
+    2. dest_len(dest의 array size -1 즉, '\0'을 만나기 전까지) count를 세주어야함
+    3. count < dest_len -1 and origin[count] != '\0'
+    4. dest[count] = origin[count];
+    5. 만약 dest_len의 크기가 origin[count]보다 작으면 dest_len(dest의 array size -1 즉, '\0'을 만나기 전까지) count를 세주어야함
+    6. 이후 while문 종료 시점에서 dest[count] = '\0'을 해주면 되겠군
     */
-   while ( (count < (dest_len-1) ) && (origin[count] != '\0') )     // count < dest_len-1 즉 '\0'전까지 다 쓰여졌을 때 and origin이 '\0'이 아닐때까지
-                                                                    // 1. origin이 dest에 들어가야함 (dest는 빈공간일 수도 있다)
-                                                                    // 2. origin을 dest에 다 넣고나서, '\0'문자를 마지막에 넣어주고 끝내면 됨
-                                                                    // 3. 하지만 만약 dest에 공간이 부족하다면? dest의 마지막인덱스-1 == dest_len의 -2까지 다 넣어주고
-                                                                    // 3.1 마지막에 '\0'을 넣어주면 됨
-                                                                    // 즉 조건은 count < dest_len-1 and origin[count] != '\0' , while문이 끝난 직후 dest[count] = '\0'
-                                                                    // count가 dest_len-1 까지 다 쓰여졌을 때, origin이 널이 아닐떄까지 해주고 dest[dest_len+count] = 널 해봐
+   while ( (count < (dest_len-1) ) && (origin[count] != '\0') )     // 1, 2의 조건을 합침
    {
-        dest[count] = origin[count];
+        dest[count] = origin[count];                                // origin을 dest에 순차적으로 넣어준다
         count++;
    }
     dest[count] = '\0';     // final count에 '\0'을 넣어 문자열을 끝맺음
@@ -81,15 +68,19 @@ char* my_strcpy(char *dest, const char *origin, const int dest_len) {
 // strcat 개량판 만들기
 char* my_strcat(char* dest, const char* origin, const int dest_len) {
     // 함수 내용 작성
-    
-    int count=0;
-    int len = my_strlen(dest);
-    while ( ( len + count < dest_len-1 ) && (origin[count] != '\0') )   //다시 공부해서 주석 다시 달기
+    // strcat => my_strlen(dest) -1
+    // 1. while 내부 선 구성, 그 구성된 식을 갖고 while의 조건을 생각해주어야 한다.
+    // 2. dest[len]부터 origin을 순차적으로 넣어주면 된다. => int count = 0; dest[len+count] = origin[count]; count++
+    // 3. 2의 식이 끝나야할 조건 => origin[count] != '\0' and len + count < dest_len -1  (in idx)
+    // 4. 만약 공간이 부족할 경우 3의 조건일 때, dest에 들어가다가 '\0'전에 멈췄을 거니까 while이 끝난 뒤 dest[len + count] = '\0';
+    int count=0;    // count
+    int len = my_strlen(dest);  //dest의 문자열 길이를 넣어둘 변수 (함수 중복호출 방지)
+    while ( ( len + count < dest_len-1 ) && (origin[count] != '\0') )   // 
     {
-        dest[ len + count ] = origin[count];
+        dest[ len + count ] = origin[count];                            // my_strlen()은 문자열의 NULL의 위치를 반환 => dest의 '\0'부터 origin count
         count++;
     }
-    dest[len + count] = '\0';
+    dest[len + count] = '\0';   // '\0'을 만나기 전에 종료되었으니 '\0'을 넣어서 문자열 읽기 종결
 
     return dest;
 }
@@ -97,6 +88,8 @@ char* my_strcat(char* dest, const char* origin, const int dest_len) {
 // strcmp 만들기
 int my_strcmp(const char* str1, const char* str2) {
     // 함수 내용 작성 
+    // strlen, strcpy, strcat 전부 그림 그리면서 정리 한 번 해보고 나서 cmp 시작할 것.
+    // strcmp => 문자열 비교결과 반환 => linux에서는 차이값 반환 => 차이 값을 저장할 변수가 필요하려나
     return 0;
 }
 
