@@ -111,7 +111,24 @@ int my_strcmp(const char* str1, const char* str2) {
 // strchr 만들기
 char* my_strchr(const char* str, int c) {
     // 함수 내용 작성 문자를 찾으면 멈추고 포인터를 반환
-    return NULL;
+
+    int count = 0;  // str을 순차적으로 count해줄 변수
+    int gap = 0;    // str, c의 차이를 저장할 변수
+
+    while( str[count] != '\0')  //str이 '\0'을 만나기 전까지 roop.
+    {   
+        gap = str[count] - c;   //gap이 멈출 조건 => str[count] != '\0' ,  gap이 0일때.
+        
+
+        if (gap == 0)           // str[count]와 c가 동일한 값일 때 str[count]를 반환해야하니 종료.
+        {   
+            break;
+        }
+        count++;    // if절을 통과하고 나서 ++해주기.
+    }
+    
+    return &str[count];    //return to str[count] address
+
 }
 
 // strstr 만들기

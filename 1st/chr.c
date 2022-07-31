@@ -16,7 +16,7 @@ int main(){
     {
         printf("%s\n", ptr);    //검색된 문자열 출력
         //ptr = strchr(ptr + 1, 's');     // 포인터에 +1해서 그 다음 문자열부터 검색
-        ptr = strchr(ptr +1, 'g');
+        ptr = strchr(ptr +1, 'B');
     }
     return 0;
 }
