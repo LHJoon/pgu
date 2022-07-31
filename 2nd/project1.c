@@ -88,29 +88,14 @@ char* my_strcat(char* dest, const char* origin, const int dest_len) {
 // strcmp 만들기
 int my_strcmp(const char* str1, const char* str2) {
     // 함수 내용 작성 
-    // strlen, strcpy, strcat 전부 그림 그리면서 정리 한 번 해보고 나서 cmp 시작할 것.
-    // strcmp => 문자열 비교결과 반환 => linux에서는 차이값 반환 => 
-    // 1. cmp는 비트단위로 비교, 첫번째 비트가 동일하다면 '\0'을 만나기전 까지 한 비트별로 차이가 있는지 계산해준다
-    // 2. 차이가 생기는 지점 즉 str2와 str1의 값이 동일하지 않은 지점까지만 프로그램이 진행되면 된다.   
-    // 3. ASCII값으로 비교하고, 차이가 있다면 ASCII값으로 내보내준다
-    // 4. 1과2의 조건 => str1[count] != '\0' && str2[count] != '\0' && str2 != str1
-    // 5. 널을 만나기 전. 이 떄 굳이 두개가 같아야하나?
-    // 6. str1과 str2의 길이를 비교하고, 더 긴 쪽이 '\0'을 만나기 전까지 해준다면? 몰라 일단 이거 배제하고 스타트 해보자.
+    // str1, str2의 차이값을 diff에 넣는다. 만약 diff가 0이면 다음걸로 진행하면 되겠지, 그리고 둘 중 하나가 '\0'을 만날떄까지 진행하면 된다.
+    // strcmp => 비트단위로 str1, str2를 비교, 비교 도중 차이가 생긴다면 차이값을 반환, 차이가 생기지 않는다면 0을 반환
+    // str1, str2의 사이즈가 다를경우 한 쪽의 '\0'에서 차이가 발생하기 때문에 사이즈가 작은쪽이 '\0'을 만나도 while문은 진행해야한다.
+    // while문이 돌아가는 도중 차이가 생긴다면 프로그램을 멈춰야한다. 
     int count = 0;
     int gap = 0;   // str1과 str2의 차이값을 저장할 변수
-    // int len1 = my_strlen(str1);
-    // int len2 = my_strlen(str2);
-    // 
 
-    // str1, str2의 차이값을 diff에 넣는다. 만약 diff가 0이면 다음걸로 진행하면 되겠지, 그리고 둘 중 하나가 '\0'을 만날떄까지 진행하면 된다.
-                                            // 1.만약 str1이나 str2가 '\0'을 만나지 않았는데 gap이 0이 아니게된다면 프로그램이 끝나야지
-                                            // 2.str1,2가 '\0'을 만날때까지 gap이 그대로라면 gap을 반환, st1,2가 '\0'을 만나지 않았는데 gap이 그대로라면 멈추고 gap을 반환
-                                            // 이 떄 각 문자열의 len의 길이가 중요한가? 는 일단 PASS해보고 앞선거부터 해보자.
-                                            // 아냐 일단 while안에걸 보고 저게 멈춰야할 조건
-                                            // 일단 선행되어야 할 조건은 '\0'을 만날때까지 str1과 str2를 돌리는 것
-                                            // 그 다음 조건은 gap이 만약 0이 아니라면 멈추고 그 차이값을 반환하는 것 
-
-    while ( str1[count] != '\0' && str2[count] != '\0' )     // 이 조건 일단 배제하고 while 내부부터 구성해보자
+    while ( str1[count] != '\0' || str2[count] != '\0' )     // 둘 중 하나가 '\0'을 만나도 while문은 작동한다.
     {
         if(gap != 0)        //만약 gap이 0이 아니라면 while문을 멈춘다.
         {
@@ -119,17 +104,7 @@ int my_strcmp(const char* str1, const char* str2) {
         gap = str1[count] - str2[count];    // gap에 str1과 str2의 차이값을 넣어준다.
         count++;
     }
-    // 현재 문자열의 길이가 다를 때 한 쪽이 먼저 '\0'을 만나서 계산이 되기전에 계산이 끝나버렸다.
-    // 처음 배제했던 문자열의 길이를 비교해야함
-    // => mystrlen의 크기가 더 큰 쪽이 '\0'을 만날때까지만 계산하는 것으로 고려해주고, 더 짧은쪽이 '\0'을 만났을 때 while문이 중지되는 것을 없애주어야 함
-    // int len1 = my_strlen(str1);
-    // int len2 = my_strlen(str2);
-    // if (str2 < str1)
-    // else if (str2 < str1)    
-    // else (str2 == str1)  // 같을때는 알빠아님
-    //어느 한 쪽이 더 큰게 문제니까 어느 한 쪽이 더 크면 그 사이즈에 맞춰서 해주면 됨. 예를들어
-    // if(len2 < len1) len1이 더 크다면 while문에서 str1이 '\0'을 만날떄까지
-    // 반대로 len2가 더 크다면 str2가 '\0'을 만날때까지
+ 
     return gap;     // gap 반환
 }
 
