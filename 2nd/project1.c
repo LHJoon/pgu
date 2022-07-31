@@ -89,7 +89,13 @@ char* my_strcat(char* dest, const char* origin, const int dest_len) {
 int my_strcmp(const char* str1, const char* str2) {
     // 함수 내용 작성 
     // strlen, strcpy, strcat 전부 그림 그리면서 정리 한 번 해보고 나서 cmp 시작할 것.
-    // strcmp => 문자열 비교결과 반환 => linux에서는 차이값 반환 => 차이 값을 저장할 변수가 필요하려나
+    // strcmp => 문자열 비교결과 반환 => linux에서는 차이값 반환 => 
+    // 1. cmp는 비트단위로 비교, 첫번째 비트가 동일하다면 '\0'을 만나기전 까지 한 비트별로 차이가 있는지 계산해준다
+    // 2. 차이가 생기는 지점 즉 str2와 str1의 값이 동일하지 않은 지점까지만 프로그램이 진행되면 된다.   
+    // 3. ASCII값으로 비교하고, 차이가 있다면 ASCII값으로 내보내준다
+    // 4. 1과2의 조건 => str1[count] != '\0' && str2[count] != '\0' && str2 != str1
+    // 5. 널을 만나기 전 이 떄 굳이 두개가 같아야하나?
+    // 6. str1과 str2의 길이를 비교하고, 더 긴 쪽이 '\0'을 만나기 전까지 해준다면? 몰라 일단 이거 배제하고 스타트 해보자.
     return 0;
 }
 
