@@ -32,7 +32,7 @@
 // strlen 만들기
 size_t my_strlen(const char* str) {
     // 함수 내용 작성
-    int count = 0;  // 카운트해줄 정수형 변수 선언
+    size_t count = 0;  // 카운트해줄 정수형 변수 선언
     while (str[count] != '\0')   //문자열이 NULL값을 만날 때 까지 실행          char *s1= "hi" h +1, i 2, return 2, s1[2] = NULL
     {
         count +=1;                  // 문자열 개수 COUNT    
@@ -104,14 +104,14 @@ int my_strcmp(const char* str1, const char* str2) {
         gap = str1[count] - str2[count];    // gap에 str1과 str2의 차이값을 넣어준다.
         count++;
     }
- 
+
     return gap;     // gap 반환
 }
 
 // strchr 만들기
 char* my_strchr(const char* str, int c) {
     // 함수 내용 작성 문자를 찾으면 멈추고 포인터를 반환
-
+    //char *re = NULL;
     int count = 0;  // str을 순차적으로 count해줄 변수
     int gap = 0;    // str, c의 차이를 저장할 변수
     int len = my_strlen(str);
@@ -123,15 +123,17 @@ char* my_strchr(const char* str, int c) {
 
         if (gap == 0)           // str[count]와 c가 동일한 값일 때 str[count]를 반환해야하니 종료.
         {   
-            break;
+            //re = &str[count];
+            //break;
+            return &str[count];
         }
         count++;    // if절을 통과하고 나서 ++해주기.
     }
     //strchr은 문자열에서 문자를 찾다가 문자를 찾고 '\0'을 만나면 '\0'을 반환하고 끝내는 함수 즉 while이 끝난 뒤 '\0'을 넣어주어 구분지어야한다.
-    str[len] = '\0';
     
-    return &str[count];    //return to str[count] address
-    // 만약 검색한 문자가 대상 문자열에 아예 존재하지 않는다면
+    //return re;    //return to str[count] address
+    return NULL;
+    // 만약 검색한 문자가 대상 문자열에 아예 존재하지 않는다면 '\0'을 반환해야함
     // 
 }
 
