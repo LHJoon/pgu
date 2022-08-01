@@ -140,5 +140,25 @@ char* my_strchr(const char* str, int c) {
 // strstr 만들기
 char* my_strstr(char* str1, const char* str2) {
     // 함수 내용 작성 문자열을 찾으면 문자열의 첫번째 문자에서 멈추고 포인터를 반환
+    // str2를 읽고 그 문자와 길이가 똑같은 문자열을 str1에서 찾아야 함  => 메모리 상 같이 붙어있는 문자들이어야함 
+    // str2를 먼저 읽은다음에 str1를 읽어주면 될 듯
+    // 1. strstr => strchr과 비슷하지만 문자 하나가 아닌 문자열을 찾아서 포인터를 반환해야 함
+    // 2. 문자열을 찾으려면 첫 번쨰 str1과 str2를 대조해주면서 읽어야 함
+    // 3. str2 문자열의 길이만큼 str1을 순차적으로 읽어주면 될 듯
+    // 4. 
+    int count = 0;
+    int gap = 0;
+    char* s2;
+    int len1 = my_strlen(str1);
+    int len2 = my_strlen(str2);
+    // 문자열의 길이가 같으면서 동시에 gap이 0이어야 한다라,,   str2와 탐색하고자 하는 str1의 길이가 같을동안 
+    while()
+    {
+        if(gap == 0)
+        {
+            s2 =
+        }
+    }
+
     return NULL;
 }
