@@ -114,7 +114,6 @@ char* my_strchr(const char* str, int c) {
     //char *re = NULL;
     int count = 0;  // str을 순차적으로 count해줄 변수
     int gap = 0;    // str, c의 차이를 저장할 변수
-    int len = my_strlen(str);
 
     while( str[count] != '\0')  //str이 '\0'을 만나기 전까지 roop.
     {   
@@ -141,68 +140,37 @@ char* my_strchr(const char* str, int c) {
 char* my_strstr(char* str1, const char* str2) {
     // 함수 내용 작성 문자열을 찾으면 문자열의 첫번째 문자에서 멈추고 포인터를 반환
 
-    /*
-    int count = 0;
-    int gap = 0;
-    //char* re = NULL;
-    int len1 = my_strlen(str1);
-    int len2 = my_strlen(str2);
-    // 1. 문자열의 길이가 같으면서 동시에 gap이 0이어야 한다라,,   => 순차적으로 str1을 len2의 길이만큼 읽는데 그 동안 전부 gap이 0이면 된다. =>첫번째 while문?
-    // 2. 1의 조건을 수식으로 만들어보면 count <= len2일동안   str1[count] = str2[count]
-    while(couint+len2 <= len1)    //count+ len2 <= len1 count값과 str2의 길이보다 len1이 더 크면 
-    {
-        gap = str1[count] - str2[count];    // str2와 str1의 차이를 gap에 저장
-        
-        if(gap == 0)    // 차이가 있다면 프로그램 종료하면 안되고, '\0'을 만나거나, len2의 길이만큼 다 돌고 str2를 찾으면 eturn &str1[count]하고 종료 
-        {
-            //gap이 0이면 프로그램 계속 돌려야지    지금 포인트를 잘못 잡고있다. 
-        }
-        count++;    //if절을 통과했다면 count++
-    }
-    */
-
-    /*
-    만약 char* a "IHHI", char* b "HI"라고 가정했을 때
-    char b는 a인덱스에 아래와 같이 접근해야함
-    int count1 = 0; int count2 = 0;
-    while(count2 < len2)
-    a[count] 와 b[count2]과 같으면 진행
-    a[0] != b[0]
-    a[1] == b[1]
-    a[2] != b[2]
-    a[2] != b[1]
-    a[3] == b[2]
-    위 조건을 수식으로 짜면 
-    */
+    // 1. gap = str1[count1] - str2[count2]해서 같은 문자인지 비교
+    // 2. 만약 같은 문자가 들어있다면 count++
+    // 2. 만약 다르다면 str2의 인덱스를 0으로 초기화하고 다시 순차적으로 비교 
+    // 3. str2[count2]가 NULL문자를 만나게 된다면 &str1[count]를 리턴하고 프로그램 종료
+    // 4. str1[count1]이 NULL문자를 만나게 된다면 &str1[count]를 리턴하고 프로그램 종료
+    // 3.4의 조건 => while(str1[count1] != '\0' || str2[count2] != '\0')
+    // 만약 str2의 길이가 str1의 길이보다 크다면 str2의 문자열이 str1에 있을리가 없으므로 프로그램 종료 ==> len1이 len2보다 더 크거나 같을 때에만 실행
+    // 
     int count1 = 0;
     int count2 = 0;
     int gap = 0;
     char* re = NULL;
+    int len1 = my_strlen(str1);
+    int len2 = my_strlen(str2);
 
-    while(str2[count2] != '\0' || str1[count1] != '\0')     //str2[count2]가 NULL문자를 만나기 전까지 
+    while((str2[count2] != '\0' || str1[count1] != '\0') && len1 >= len2)     // 각 문자열이 '\0'을 만나 끝나기 전까지 and len1이 len2보다 크거나 같을때만 프로그램 실행
     {
-        //1. 차이X str1, str2의 차이가 없다면 str2와 str1의 인덱스를 ++해서 비교를 한다   
-        //2. 차이O 차이가 생겼다면 다시 str1은 그대로 두고, str2만 인덱스를 처음부터 비교 (str2가 널문자를 만날 때 까지.)
-        //3.
-        gap = str1[count1] - str2[count2];      //str1, 2의 차이값을 gap에 넣어줌
-
-        if( gap == 0)   //차이가 없다면 인덱스 1씩 증가
-        {
-            count1++;  
-            count2++;
-        }
-        else//( gap != 0)     // if 조건덕에 사실 굳이 조건을 안써줘도 됨
-            count2 = 0;     //차이가 존재한다면 count2의 인덱스만 초기화.
         
+        gap = str1[count1] - str2[count2];      //str1, 2의 차이값을 gap에 넣어줌   => str1[count1]과 str2[count2]의 문자가 동일한지 확인.
+        count1++;                               //str1의 idx 증가
+        if( gap == 0)   // 동일한 문자를 갖고있다면 str2의 인덱스 1 증가 
+        {   
+
+            count2++;
+            //re = &str1[count1];
+        }
+        else    // 문자가 서로 다르다면 str2 idx 0으로 초기화 ( 처음부터 읽음) but str1의 idx는 ++된 상태
+            count2 = 0;     //차이가 존재한다면 count2의 인덱스만 초기화.
+
     }
-    // 이렇게하면 차이가 없으면 다음 인덱스를 서로 비교하고
-    // 차이가 있으면 count2를 첫 인덱스부터 비교해준다.
-    // 일단 비교하는 방법은 끝.!
-    // 그리고 이제 str2가 len2의 길이까지 (NULL문자를 만나기 전까지) 다 돌았음에도 불구하고 차이가 없었다면
-    // return 
-    //그러면 끝 이 떄 [count2]는 len2만큼 돌아야하고
-    //count1은 len1만큼 돌아야함 => str1[count] != '\0' || str2[count] != '\0'
-    //count1이 널문자를 만나도 종료하고 반환해야한다.
-    
-    return &str1[count1];
+    re = &str1[count1];
+
+    return re;
 }
