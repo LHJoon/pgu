@@ -45,8 +45,8 @@ size_t my_strlen(const char* str) {
 // strcpy 개량판 만들기
 char* my_strcpy(char *dest, const char *origin, const int dest_len) {
 
+    
     // 함수 내용 작성
-    int count = 0;
     /*
     1. origin이 '\0'을 만나기 전까지
     2. dest_len(dest의 array size -1 즉, '\0'을 만나기 전까지) count를 세주어야함
@@ -55,7 +55,9 @@ char* my_strcpy(char *dest, const char *origin, const int dest_len) {
     5. 만약 dest_len의 크기가 origin[count]보다 작으면 dest_len(dest의 array size -1 즉, '\0'을 만나기 전까지) count를 세주어야함
     6. 이후 while문 종료 시점에서 dest[count] = '\0'을 해주면 되겠군
     */
-   while ( (count < (dest_len-1) ) && (origin[count] != '\0') )     // 1, 2의 조건을 합침
+    int count = 0;
+
+   while ( (count < dest_len-1 ) && (origin[count] != '\0') )     // 1, 2의 조건을 합침
    {
         dest[count] = origin[count];                                // origin을 dest에 순차적으로 넣어준다
         count++;
@@ -77,7 +79,7 @@ char* my_strcat(char* dest, const char* origin, const int dest_len) {
     int len = my_strlen(dest);  //dest의 문자열 길이를 넣어둘 변수 (함수 중복호출 방지)
     while ( ( len + count < dest_len-1 ) && (origin[count] != '\0') )   // 
     {
-        dest[ len + count ] = origin[count];                            // my_strlen()은 문자열의 NULL의 위치를 반환 => dest의 '\0'부터 origin count
+        dest[ len + count ] = origin[count];    // my_strlen()은 문자열의 NULL의 위치를 반환 => dest의 '\0'부터 origin count
         count++;
     }
     dest[len + count] = '\0';   // '\0'을 만나기 전에 종료되었으니 '\0'을 넣어서 문자열 읽기 종결
@@ -96,12 +98,12 @@ int my_strcmp(const char* str1, const char* str2) {
     int gap = 0;   // str1과 str2의 차이값을 저장할 변수
 
     while ( str1[count] != '\0' || str2[count] != '\0' )     // 둘 중 하나가 '\0'을 만나도 while문은 작동한다.
-    {
+    {   
+        gap = str1[count] - str2[count];    // gap에 str1과 str2의 차이값을 넣어준다.
         if(gap != 0)        //만약 gap이 0이 아니라면 while문을 멈춘다.
         {
             break;
         }
-        gap = str1[count] - str2[count];    // gap에 str1과 str2의 차이값을 넣어준다.
         count++;
     }
 
@@ -166,7 +168,7 @@ char* my_strstr(char* str1, const char* str2) {
             count2++;
             //re = &str1[count1];
         }
-        else    // 문자가 서로 다르다면 str2 idx 0으로 초기화 ( 처음부터 읽음) but str1의 idx는 ++된 상태
+        else    // 문자가 서로 다르다면 str2 idx 0으로 초기화 ( 처음부터 읽기 위함) but str1의 idx는 ++된 상태
             count2 = 0;     //차이가 존재한다면 count2의 인덱스만 초기화.
 
     }
@@ -174,3 +176,11 @@ char* my_strstr(char* str1, const char* str2) {
 
     return re;
 }
+
+// 문제점
+// 1. gap을 굳이 권장 안함
+// 2. 1. str1을 한글자씩 읽는 while이 필요
+// 3. 그러다 만약 str2랑 첫글자가 똑같은 곳을 발견하면
+// 4. 거기서부터 str2의 길이만큼 문자를 비교해서 전체가 다 같은 문자면 발견 => 이 떄 181번 줄의 포인터를 반환해야함 => 기억해야함
+// 5. 아니면 발견 못한거임
+// 6. 접근 자체를 잘못해부러쓰 
