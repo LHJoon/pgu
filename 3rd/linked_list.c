@@ -11,7 +11,7 @@
 // 새 노드 생성 함수
 // 입력값: 이름
 // 이 때 id는 매 호출시마다 1번부터 시작하여 하나씩 늘려가며 넣어준다.
-sLinkedList *createNode(char *name) {
+sLinkedList* createNode(char *name) {
 
 }
 
