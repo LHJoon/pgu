@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Tue Jul 26 22:07:23 2022
+# Make data base, printed on Tue Aug  9 23:54:49 2022
 
 # Variables
 
@@ -26,7 +26,7 @@ CURDIR := /Users/joon/vscode/c/pgu
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"26f3b44ea4f1e942cca002e9545643cc.ko","_translationsConfigFile":"/Users/joon/Library/Application Support/Code/clp/26f3b44ea4f1e942cca002e9545643cc.ko/tcf.json","_cacheRoot":"/Users/joon/Library/Application Support/Code/clp/26f3b44ea4f1e942cca002e9545643cc.ko","_resolvedLanguagePackCoreLocation":"/Users/joon/Library/Application Support/Code/clp/26f3b44ea4f1e942cca002e9545643cc.ko/b06ae3b2d2dbfe28bca3134cc6be65935cdfea6a","_corruptedFile":"/Users/joon/Library/Application Support/Code/clp/26f3b44ea4f1e942cca002e9545643cc.ko/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"2dff5cff996ed6cbe8d8aa8740f86aa0.ko","_translationsConfigFile":"/Users/joon/Library/Application Support/Code/clp/2dff5cff996ed6cbe8d8aa8740f86aa0.ko/tcf.json","_cacheRoot":"/Users/joon/Library/Application Support/Code/clp/2dff5cff996ed6cbe8d8aa8740f86aa0.ko","_resolvedLanguagePackCoreLocation":"/Users/joon/Library/Application Support/Code/clp/2dff5cff996ed6cbe8d8aa8740f86aa0.ko/b06ae3b2d2dbfe28bca3134cc6be65935cdfea6a","_corruptedFile":"/Users/joon/Library/Application Support/Code/clp/2dff5cff996ed6cbe8d8aa8740f86aa0.ko/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
 # makefile
@@ -42,11 +42,13 @@ PATH = /Users/joon/opt/anaconda3/bin:/Users/joon/opt/anaconda3/condabin:/opt/hom
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
+LaunchInstanceID = 294D7F4B-25E2-484B-A2F9-ED5339E7B81D
+# environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.I4PKSRHSA9/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.HV28Vt9mix/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -143,6 +145,8 @@ PAGER = less
 LC_ALL = C
 # environment
 CONDA_PYTHON_EXE = /Users/joon/opt/anaconda3/bin/python
+# environment
+SECURITYSESSIONID = 186a5
 # automatic
 ^F = $(notdir $^)
 # default
@@ -156,13 +160,13 @@ MAKELEVEL := 0
 # environment
 CONDA_PREFIX = /Users/joon/opt/anaconda3
 # environment
-VSCODE_PID = 23377
+VSCODE_PID = 473
 # environment
 _CE_CONDA = 
 # environment
 LANG = C
 # variable set hash-table stats:
-# Load=75/1024=7%, Rehash=0, Collisions=2/96=2%
+# Load=77/1024=8%, Rehash=0, Collisions=2/98=2%
 
 # Pattern-specific Variable Values
 
@@ -244,7 +248,7 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Tue Jul 26 22:07:23 2022
+# Finished Make data base on Tue Aug  9 23:54:49 2022
 
  
 make: *** No rule to make target `all'.  Stop.
