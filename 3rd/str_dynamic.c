@@ -38,24 +38,28 @@ char *dynamic_strcat(const char *str1, const char *str2) {
     // 2. str1[index] != '\0' && str2[index] != '\0'
     // 3. 이 문제는 toString의 배열 사이즈까지 고려를 하는 문제인가..? 만약 그렇다면
     // 4. (int)sizeof(toString) -1 > mystrlen(str1)+mystrlen(str2)까지 고려해줘야할 듯..?
-    // when while done, toString[index] ='\0'; 해서 끝맺음
-    // 2가 먼저냐, 4가 먼저냐, 동시냐를 생각해보자.
+    // when while done, toString[index] ='\0';
+    // index를 나누지 않고 하나로 처리할 수 있는 방법..?
     int str1_len = strlen(str1);
     int str2_len = strlen(str2);
     int len_amount = str1_len + str2_len;
     int index=0;
-    char* toString;
-    while( len_amount < (int)sizeof(toString)-1  )
+    int index2=0;
+    char* toString = (int*)malloc(sizeof(char)); // Dynamic Memory assign
+
+    while( len_amount < (int)sizeof(toString)-1 && str1[index] != '\0' && str2[index2] != '\0' )
     {
         toString[index] = str1[index];
         if(str1[index] == '\0')
         {
             toString[index] = str2[index2];
-            index2++;
+            index++;
         }
         index++;
     }
     toString[index] = '\0';
+    
+    free(toString); // Dynamic Memory free
 
     return toString;
 }
@@ -63,11 +67,11 @@ char *dynamic_strcat(const char *str1, const char *str2) {
 int main() {
     // dynamic_strcpy의 입력값이 될 문자열
     char *toCopy = "What'll you do when you get lonely";
-
+    printf("%s\n", dynamic_strcpy(toCopy));
     // dynamic_strcat의 입력값이 될 문자열 2개
     char *str1 = "And nobody's waiting by your side?";
     char *str2 = "You've been running and hiding much too long";
-
+    printf("%s\n", dynamic_strcat(str1, str2));
     // dynamic_strcpy와 dynamic_strcat을 각각 실행하고 출력하며 검증 등의 기타 필요한 작업을 진행한다.
 
     return 0;
